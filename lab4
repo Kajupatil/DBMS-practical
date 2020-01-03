@@ -1,0 +1,110 @@
+                                          lab4 (DBMS Practical)
+-------->Create a collection Messages with the below mentioned data format and insert 6
+      documents.
+
+--------->show dbs
+
+--------->use lab4
+
+---------> var a=
+[
+{
+subject:"Joe owns a dog",
+content: "Dogs are man's best friend",
+likes: 60,
+year: 2015,
+language: "english"
+},
+{
+subject:"Ashish owns a cat",
+content: "Cats are man's best friend",
+likes: 90,
+year: 2019,
+language: "english"
+},
+{
+subject:"Shruti owns a rabbit",
+content: "Rabbits are cutiee ",
+likes: 40,
+year: 2012,
+language: "english"
+},
+{
+subjec:"Shreya owns a parrot",
+content: "Parrots are colorfull",
+likes: 90,
+year: 2000,
+language: "english"
+},
+{
+subject:"Sunny owns a cow ",
+content: "Cows are used to give milk",
+likes: 50,
+year: 2015,
+language: "english"
+},
+{
+subject:"Ramesh owns a dog",
+content: "Dogs are man's best friend",
+likes: 20,year: 2016,
+language: "english"
+}];
+
+----------->db.messages.insert(a);
+
+----------->db.messages.find().pretty();
+
+Exercise:
+NOTE: Check the performance of the queries with and without indexing.  
+
+----------->db.messages.getIndexes();
+[
+	{
+		"v" : 2,
+		"key" : {
+			"_id" : 1
+		},
+		"name" : "_id_",
+		"ns" : "lab4.messages"
+	}
+]
+------1: Create a text index on subject.
+
+---------->db.messages.createIndex({subject:"text"},{name:"textbasedindex"});
+{
+	"createdCollectionAutomatically" : false,
+	"numIndexesBefore" : 1,
+	"numIndexesAfter" : 2,
+	"ok" : 1
+}
+
+-------2: Retrieve all the documents that have the keyword dogs in their subject field.
+
+----------->db.messages.find({$text:{$search:"dogs"}}).pretty();
+{
+	"_id" : ObjectId("5e0eed17ba71aa9c261de455"),
+	"subject" : "Ramesh owns a dog",
+	"content" : "Dogs are man's best friend",
+	"likes" : 20,
+	"year" : 2016,
+	"language" : "english"
+}
+{
+	"_id" : ObjectId("5e0eed17ba71aa9c261de450"),
+	"subject" : "Joe owns a dog",
+	"content" : "Dogs are man's best friend",
+	"likes" : 60,
+	"year" : 2015,
+	"language" : "english"
+}
+{
+	"_id" : ObjectId("5e0eec06ba71aa9c261de44f"),
+	"subject" : "Joe owns a dog",
+	"content" : "Dogs are man's best friend",
+	"likes" : 60,
+	"year" : 2015,
+	"language" : "english"
+}
+> 
+
+---------->
