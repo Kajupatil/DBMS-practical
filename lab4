@@ -105,6 +105,147 @@ NOTE: Check the performance of the queries with and without indexing.
 	"year" : 2015,
 	"language" : "english"
 }
-> 
 
----------->
+-------3: Sort the answer of the previous query based oon the relevance order. (Hint: $meta) ?
+
+-----------> db.messages.find({$text:{$search:"dog"}},{$sort:{$meta:"textScore"}}).pretty();
+{
+	"_id" : ObjectId("5e0eed17ba71aa9c261de455"),
+	"subject" : "Ramesh owns a dog",
+	"content" : "Dogs are man's best friend",
+	"likes" : 20,
+	"year" : 2016,
+	"language" : "english",
+	"$sort" : 0.6666666666666666
+}
+{
+	"_id" : ObjectId("5e0eed17ba71aa9c261de450"),
+	"subject" : "Joe owns a dog",
+	"content" : "Dogs are man's best friend",
+	"likes" : 60,
+	"year" : 2015,
+	"language" : "english",
+	"$sort" : 0.6666666666666666
+}
+{
+	"_id" : ObjectId("5e0eec06ba71aa9c261de44f"),
+	"subject" : "Joe owns a dog",
+	"content" : "Dogs are man's best friend",
+	"likes" : 60,
+	"year" : 2015,
+	"language" : "english",
+	"$sort" : 0.6666666666666666
+	
+----- 4: Drop the index on subject.
+------->db.messages.dropIndexes();
+{
+	"nIndexesWas" : 2,
+	"msg" : "non-_id indexes dropped for collection",
+	"ok" : 1
+}
+
+----- 5: Create a compound index on subject and content.
+
+------->db.messages.createIndex({subject:"text",content:"text"},{name:"subcon"});
+{
+	"createdCollectionAutomatically" : false,
+	"numIndexesBefore" : 1,
+	"numIndexesAfter" : 2,
+	"ok" : 1
+}
+
+----- 6: Retrieve all the documents with the keyword  "cat".
+
+-------> db.messages.find({$text:{$search:"cat"}}).pretty();
+{
+	"_id" : ObjectId("5e0eed17ba71aa9c261de451"),
+	"subject" : "Ashish owns a cat",
+	"content" : "Cats are man's best friend",
+	"likes" : 90,
+	"year" : 2019,
+	"language" : "english"
+}
+
+-----7: Retrieve the documents which contain “smart birds who love cooking”.
+
+-------->db.messages.find({$text:{$search:"smart birds who love cooking"}}).pretty();
+{
+	"_id" : ObjectId("5e1452e932f372b81d53ccce"),
+	"subject" : "sejal owns a birds",
+	"content" : "smart birds who love cooking",
+	"likes" : 90,
+	"year" : 2020,
+	"language" : "english"
+}
+
+------ 8: Retrieve documents which contain phrase "smart bird".
+
+---------->db.messages.find({$text:{$search:"\"smart bird\""}}).pretty();
+{
+	"_id" : ObjectId("5e1452e932f372b81d53ccce"),
+	"subject" : "sejal owns a birds",
+	"content" : "smart birds who love cooking",
+	"likes" : 90,
+	"year" : 2020,
+	"language" : "english"
+}
+
+------ 9: Create a partial index on subject where likes are more then 60.
+
+--------->db.messages.dropIndexes();
+{
+	"nIndexesWas" : 2,
+	"msg" : "non-_id indexes dropped for collection",
+	"ok" : 1
+}
+> db.messages.createIndex({subject:"text"},{partialFilterExpression:{likes:{$gt:60}}});
+{
+	"createdCollectionAutomatically" : false,
+	"numIndexesBefore" : 1,
+	"numIndexesAfter" : 2,
+	"ok" : 1
+}
+db.messages.find({likes:{$gt:60}}).pretty();
+{
+	"_id" : ObjectId("5e0eed17ba71aa9c261de451"),
+	"subject" : "Ashish owns a cat",
+	"content" : "Cats are man's best friend",
+	"likes" : 90,
+	"year" : 2019,
+	"language" : "english"
+}
+{
+	"_id" : ObjectId("5e0eed17ba71aa9c261de453"),
+	"subjec" : "Shreya owns a parrot",
+	"content" : "Parrots are colorfull",
+	"likes" : 90,
+	"year" : 2000,
+	"language" : "english"
+}
+{
+	"_id" : ObjectId("5e1452e932f372b81d53ccce"),
+	"subject" : "sejal owns a birds",
+	"content" : "smart birds who love cooking",
+	"likes" : 90,
+	"year" : 2020,
+	"language" : "english"
+}
+
+------ 10: Calculate total views of all the documents which contain word "dog".
+
+---------> > db.messages.dropIndexes();
+{
+	"nIndexesWas" : 2,
+	"msg" : "non-_id indexes dropped for collection",
+	"ok" : 1
+}
+> db.messages.createIndex({"$**":"text"});
+{
+	"createdCollectionAutomatically" : false,
+	"numIndexesBefore" : 1,
+	"numIndexesAfter" : 2,
+	"ok" : 1
+}
+> db.messages.find({$text:{$search:"dog"}}).count();
+---3
+
