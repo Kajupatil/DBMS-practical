@@ -247,5 +247,11 @@ db.messages.find({likes:{$gt:60}}).pretty();
 	"ok" : 1
 }
 > db.messages.find({$text:{$search:"dog"}}).count();
----3
+
+---- 11: Sort the previous query answer in the relevance order of the term.
+
+------->db.messages.find({$text:{$search:"dog"}},{$sort:{$meta:"textScore"}}).count();
+         3
+      
+
 
