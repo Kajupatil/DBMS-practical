@@ -252,6 +252,131 @@ db.messages.find({likes:{$gt:60}}).pretty();
 
 ------->db.messages.find({$text:{$search:"dog"}},{$sort:{$meta:"textScore"}}).count();
          3
-      
+   
+                 *** Geospatial Queries  ***
+------->show dbs
+admin     0.000GB
+college   0.000GB
+company   0.000GB
+config    0.000GB
+employee  0.000GB
+lab1      0.000GB
+lab3      0.000GB
+lab4      0.000GB
+lab5      0.000GB
+local     0.000GB
+test      0.000GB
+
+-------> use lab4
+switched to db lab4
+
+-------> show tables
+Geospatial
+messages
+
+--------> var a=[{ "name" : "Squaw Valley", "location" : { "type" : "Point", "coordinates" : [ -120.24, 39.21 ] } }, { "name" : "Mammoth Lakes", "location" : { "type" : "Point", "coordinates" : [ -118.9, 37.61 ] } }, { "name" : "Aspen", "location" : { "type" : "Point", "coordinates" : [ -106.82, 39.18 ] } }, { "name" : "Whistler", "location" : { "type" : "Point", "coordinates" : [ -122.95, 50.12 ] } }];
+--------> db.Geospatial.insert(a);
+BulkWriteResult({
+	"writeErrors" : [ ],
+	"writeConcernErrors" : [ ],
+	"nInserted" : 4,
+	"nUpserted" : 0,
+	"nMatched" : 0,
+	"nModified" : 0,
+	"nRemoved" : 0,
+	"upserted" : [ ]
+})
+--------> db.Geospatial.find().pretty();
+{
+	"_id" : ObjectId("5e18294e1515c33d02becac1"),
+	"name" : "Squaw Valley",
+	"location" : {
+		"type" : "Point",
+		"coordinates" : [
+			-120.24,
+			39.21
+		]
+	}
+}
+{
+	"_id" : ObjectId("5e18294e1515c33d02becac2"),
+	"name" : "Mammoth Lakes",
+	"location" : {
+		"type" : "Point",
+		"coordinates" : [
+			-118.9,
+			37.61
+		]
+	}
+}
+{
+	"_id" : ObjectId("5e18294e1515c33d02becac3"),
+	"name" : "Aspen",
+	"location" : {
+		"type" : "Point",
+		"coordinates" : [
+			-106.82,
+			39.18
+		]
+	}
+}
+{
+	"_id" : ObjectId("5e18294e1515c33d02becac4"),
+	"name" : "Whistler",
+	"location" : {
+		"type" : "Point",
+		"coordinates" : [
+			-122.95,
+			50.12
+		]
+	}
+}
+{
+	"_id" : ObjectId("5e182a601515c33d02becac5"),
+	"name" : "Squaw Valley",
+	"location" : {
+		"type" : "Point",
+		"coordinates" : [
+			-120.24,
+			39.21
+		]
+	}
+}
+{
+	"_id" : ObjectId("5e182a601515c33d02becac6"),
+	"name" : "Mammoth Lakes",
+	"location" : {
+		"type" : "Point",
+		"coordinates" : [
+			-118.9,
+			37.61
+		]
+	}
+}
+{
+	"_id" : ObjectId("5e182a601515c33d02becac7"),
+	"name" : "Aspen",
+	"location" : {
+		"type" : "Point",
+		"coordinates" : [
+			-106.82,
+			39.18
+		]
+	}
+}
+{
+	"_id" : ObjectId("5e182a601515c33d02becac8"),
+	"name" : "Whistler",
+	"location" : {
+		"type" : "Point",
+		"coordinates" : [
+			-122.95,
+			50.12
+		]
+	}
+}
+ 
+	 
+		 
 
 
