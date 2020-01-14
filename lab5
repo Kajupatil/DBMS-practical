@@ -3,42 +3,235 @@ Date: 9/01/2019
 
 ----- Create a collection with the following data format and insert 4 records:
 
-------->var b=[
+------->var a=[
 {
-"course" : "Chemistry 101",
-"startDate" : ISODate("2016-02-12T18:30:00Z"),
-"students" : [
-{
-"fName" : "Bobby",
-"lName" :"Briggs",
-"marks" : 21
+	"class" : "Philosophy 101",
+	"startDate" : ISODate("2016-02-09T18:30:00Z"),
+	"students" : [
+		{
+			"fName" : "Dale",
+			"lName" : "Cooper",
+			"age" : 42,
+			"marks":50
+		},
+		{
+			"fName" : "Lucy",
+			"lName" : "Moran",
+			"age" : 35,
+			"marks":60
+		        
+			
+		},
+		{
+			"fName" : "Tommy",
+			"lName" : "Hill",
+			"age" : 44,
+			"marks":40
+			
+		}
+	],
+	"cost" : 1600,
+	"professor" : "Paul Slugman",
+	"topics" : "Socrates,Plato,Aristotle,Francis Bacon",
+	"book" : {
+		"isbn" : "1133612105",
+		"title" : "Philosophy : A Text With Readings",
+		"price" : 165.42
+	}
 },
 {
-"fName" : "Donna",
-"lName": "Hayward",
-"marks" : 21
+	"class" : "College Algebra",
+	"startDate" : ISODate("2016-02-10T18:30:00Z"),
+	"students" : [
+		{
+			"fName" : "Dale",
+			"lName" : "Cooper",
+			"age" : 42,
+			"marks":30
+			
+		},
+		{
+			"fName" : "Laura",
+			"lName" : "Palmer",
+			"age" : 22,
+			"marks":80
+			
+		},
+		{
+			"fName" : "Donna",
+			"lName" : "Hayward",
+			"age" : 21,
+			"marks":90
+			
+		},
+		{
+			"fName" : "Shelly",
+			"lName" : "Johnson",
+			"age" : 24,
+			"marks":30
+			
+		}
+	],
+	"cost" : 1500,
+	"professor" : "Rhonda Smith",
+	"topics" : "Rational Expressions,Linear Equations,Quadratic Equations",
+	"book" : {
+		"isbn" : "0321671791",
+		"title" : "College Algebra",
+		"price" : 179.4
+	}
 },
 {
-"fName" : "Audrey",
-"lName" : "Horne",
-"marks" : 20
+	"class" : "Astronomy 101",
+	"startDate" : ISODate("2016-02-10T18:30:00Z"),
+	"students" : [
+		{
+			"fName" : "Bobby",
+			"lName" : "Briggs",
+			"age" : 21
+			"marks":50
+			
+		},
+		{
+			"fName" : "Laura",
+			"lName" : "Palmer",
+			"age" : 22
+			"marks":60
+			
+		},
+		{
+			"fName" : "Audrey",
+			"lName" : "Horne",
+			"age" : 20,
+			"marks":20
+			
+		}
+	],
+	"cost" : 1650,
+	"professor" : "Paul Slugman",
+	"topics" : "Sun,Mercury,Venus,Earth,Moon,Mars",
+	"book" : {
+		"isbn" : "0321815351",
+		"title" : "Astronomy: Beginning Guide to Univ",
+		"price" : 129.45
+	}
 },
 {
-"fName" : "James",
-"lName" : "Hurley",
-"marks" : 25
-}
-],
-"professor" : "Kamat P",
-"topics" : "Matter,Thermodynamics,Atom,Periodic Table",
-"book" : {
-"isbn" : "0547219474",
-"title" : "Chemistry : Matter and Change",
-"price" : 104.3
-}
+	"class" : "Geology 101",
+	"startDate" : ISODate("2016-02-11T18:30:00Z"),
+	"students" : [
+		{
+			"fName" : "Andy",
+			"lName" : "Brennan",
+			"age" : 36,
+			"marks":50
+			
+		},
+		{
+			"fName" : "Laura",
+			"lName" : "Palmer",
+			"age" : 22,
+			"marks":70
+			
+		},
+		{
+			"fName" : "Audrey",
+			"lName" : "Horne",
+			"age" : 20,
+			"marks":80
+			
+		}
+	],
+	"cost" : 1450,
+	"professor" : "Alice Jones",
+	"topics" : "Earth,Moon,Elements,Minerals",
+	"book" : {
+		"isbn" : "0321814061",
+		"title" : "Earth : An Introduction to Physical Geology",
+		"price" : 130.65
+	}
+},
+{
+	"class" : "Biology 101",
+	"startDate" : ISODate("2016-02-10T18:30:00Z"),
+	"students" : [
+		{
+			"fName" : "Andy",
+			"lName" : "Brennan",
+			"age" : 36,
+			"marks":75
+			
+		},
+		{
+			"fName" : "James",
+			"lName" : "Hurley",
+			"age" : 25,
+			"marks":50
+			
+		},
+		{
+			"fName" : "Harry",
+			"lName" : "Truman",
+			"age" : 41,
+			"marks":20
+			
+		}
+	],
+	"cost" : 1550,
+	"professor" : "Alice Jones",
+	"topics" : "Earth,Cell,Energy,Genetics,DNA",
+	"book" : {
+		"isbn" : "0547219474",
+		"title" : "Holt McDougal Biology",
+		"price" : 104.3
+	}
+},
+{
+	"class" : "Chemistry 101",
+	"startDate" : ISODate("2016-02-12T18:30:00Z"),
+	"students" : [
+		{
+			"fName" : "Bobby",
+			"lName" : "Briggs",
+			"age" : 21,
+			"marks":90
+			
+		},
+		{
+			"fName" : "Donna",
+			"lName" : "Hayward",
+			"age" : 21,
+			"marks":60
+			
+		},
+		{
+			"fName" : "Audrey",
+			"lName" : "Horne",
+			"age" : 20,
+			"marks":65
+			
+		},
+		{
+			"fName" : "James",
+			"lName" : "Hurley",
+			"age" : 25,
+			"marks":45
+			
+		}
+	],
+	"cost" : 1600,
+	"professor" : "Alice Jones",
+	"topics" : "Matter,Energy,Atom,Periodic Table",
+	"book" : {
+		"isbn" : "0547219474",
+		"title" : "Chemistry : Matter and Change",
+		"price" : 104.3
+	}
 }];
 
---------> db.student.insert(b);
+
+
+--------> db.student.insert(a);
 ------ BulkWriteResult({
 	"writeErrors" : [ ],
 	"writeConcernErrors" : [ ],
@@ -55,17 +248,95 @@ Date: 9/01/2019
 ---------> var mapf2=function(){ for(i=0;this.students.length;i++) { var student2=this.students[i]; emit(student2.fName+" "+student2.lName,student2.marks); } }
 ---------> var redf2=function(student2,marks){ count=0; for(i=0;i<marks.length;i++){count=count+marks[i];}return count;}
 ---------> db.student2.mapReduce(mapf2,redf2,{out:"coi2"});
+--------{
+	"result" : "studMap",
+	"timeMillis" : 423,
+	"counts" : {
+		"input" : 12,
+		"emit" : 40,
+		"reduce" : 11,
+		"output" : 11
+	},
+	"ok" : 1
+
+       <<    Create a map reduce function to calculate the age of each student
+	   
+	  > ----var mapfunc=function(){
+... for(i=0;i<this.students.length;i++)
+... {
+... var students=this.students[i];
+... emit(students.fName+" "+students.lName,students.age);}}
+> var redfunc=function(){
+... 
+... 
+> var redfun=function(students,age){
+... count=0;
+... for(i=0;i<age.length;i++){
+... count=count+age[i];}
+... return count;}
+> db.mapred.mapReduce(mapfunc,redfun,{out:"studMap"});
+{
+	"result" : "studMap",
+	"timeMillis" : 423,
+	"counts" : {
+		"input" : 12,
+		"emit" : 40,
+		"reduce" : 11,
+		"output" : 11
+	},
+	"ok" : 1
+	
+-------use lab5
+-------> show tables
+mapred
+studMap
+student
+-------> db.studMap.find().pretty();
+{ "_id" : "Andy Brennan", "value" : 144 }
+{ "_id" : "Audrey Horne", "value" : 120 }
+{ "_id" : "Bobby Briggs", "value" : 84 }
+{ "_id" : "Dale Cooper", "value" : 168 }
+{ "_id" : "Donna Hayward", "value" : 84 }
+{ "_id" : "Harry Truman", "value" : 82 }
+{ "_id" : "James Hurley", "value" : 100 }
+{ "_id" : "Laura Palmer", "value" : 132 }
+{ "_id" : "Lucy Moran", "value" : 70 }
+{ "_id" : "Shelly Johnson", "value" : 48 }
+{ "_id" : "Tommy Hill", "value" : 88 }
 
 
-2: Create a map reduce function to calculate the count of the courses floated by each
-faculty.
+
+----- 2: Create a map reduce function to calculate the count of the courses floated by each
+         faculty.
+--------> var mapf1=function(){ emit(this.professor,1);}
+--------> var redf1=function(pro,values){ count=0; for(i=0;i<values.length;i++){count=count+values[i];}return count;}
+--------> db.mapred.mapReduce(mapf1,redf1,{query:{professor:"Alice Jones"},out:"pro"});
+{
+	"result" : "pro",
+	"timeMillis" : 342,
+	"counts" : {
+		"input" : 6,
+		"emit" : 6,
+		"reduce" : 1,
+		"output" : 1
+	},
+	"ok" : 1
+}
+-------> db.pro.find().pretty();
+{ "_id" : "Alice Jones", "value" : 6 }
+-------> show tables
+mapred
+pro
+studMap
+student
+
+------3: Create a map reduce function to calculate the percentage of each student.
 
 
 
 
 
 
-3: Create a map reduce function to calculate the percentage of each student.
 4: Create a map reduce function to find the count of registered students for each course.
 5: Create a map reduce function to display the professor name and the courses names.
 6: Create collection with fields name and age.
