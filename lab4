@@ -376,7 +376,206 @@ BulkWriteResult({
 	}
 }
  
-	 
-		 
+ Note:
+locations are in the state of Colorado
+{
+&quot;type&quot;: &quot;Polygon&quot;,
+&quot;coordinates&quot;: [[
+[-109, 41],
+[-102, 41],
+[-102, 37],
+[-109, 37],
+[-109, 41]
+]]
+}
+
+------- 1: Find the locations present in the state of Colorado.
+----------> >db.geo.find( { location:{ $geoIntersects:{ $geometry:{type:"Polygon",coordinates:[[[ -109, 41 ], [ -102, 41 ], [ -102, 37 ], [ -109, 37 ], [ -109, 41 ]]]}}}}).pretty();
+{
+	"_id" : ObjectId("5e1d7317e8ecda9ed6311bd6"),
+	"name" : "Colorado",
+	"location" : {
+		"type" : "Polygon",
+		"coordinates" : [
+			[
+				[
+					-109,
+					41
+				],
+				[
+					-102,
+					41
+				],
+				[
+					-102,
+					37
+				],
+				[
+					-109,
+					37
+				],
+				[
+					-109,
+					41
+				]
+			]
+		]
+	}
+}
+{
+	"_id" : ObjectId("5e144474a61e0e2cdca7e511"),
+	"name" : "Aspen",
+	"location" : {
+		"type" : "Point",
+		"coordinates" : [
+			-106.82,
+			39.18
+		]
+	}
+}
+
+
+------- 2: Find all the locations with a circumradius 300 miles centered on San Francisco
+               (approximately latitude 37.7, longitude -122.5):
+--------->> db.geo.find({location:{$geoWithin:{$centerSphere:[[-122.5,37.7],300/3609]}}}).pretty();
+{
+	"_id" : ObjectId("5e144474a61e0e2cdca7e510"),
+	"name" : "Mammoth Lakes",
+	"location" : {
+		"type" : "Point",
+		"coordinates" : [
+			-118.9,
+			37.61
+		]
+	}
+}
+{
+	"_id" : ObjectId("5e144474a61e0e2cdca7e50f"),
+	"name" : "Squaw Valley",
+	"location" : {
+		"type" : "Point",
+		"coordinates" : [
+			-120.24,
+			39.21
+		]
+	}
+}
+
+----- 3: Find all documents within 900 miles of San Francisco and order them by distance
+-------->>db.geo.find({ location:{ $nearSphere:{ $geometry:{type:"Point",coordinates:[-122.25,37.47]},$maxDistance:900*1609 }}}).pretty();
+{
+	"_id" : ObjectId("5e144474a61e0e2cdca7e50f"),
+	"name" : "Squaw Valley",
+	"location" : {
+		"type" : "Point",
+		"coordinates" : [
+			-120.24,
+			39.21
+		]
+	}
+}
+{
+	"_id" : ObjectId("5e144474a61e0e2cdca7e510"),
+	"name" : "Mammoth Lakes",
+	"location" : {
+		"type" : "Point",
+		"coordinates" : [
+			-118.9,
+			37.61
+		]
+	}
+}
+{
+	"_id" : ObjectId("5e1d7317e8ecda9ed6311bd6"),
+	"name" : "Colorado",
+	"location" : {
+		"type" : "Polygon",
+		"coordinates" : [
+			[
+				[
+					-109,
+					41
+				],
+				[
+					-102,
+					41
+				],
+				[
+					-102,
+					37
+				],
+				[
+					-109,
+					37
+				],
+				[
+					-109,
+					41
+				]
+			]
+		]
+	}
+}
+{
+	"_id" : ObjectId("5e144474a61e0e2cdca7e511"),
+	"name" : "Aspen",
+	"location" : {
+		"type" : "Point",
+		"coordinates" : [
+			-106.82,
+			39.18
+		]
+	}
+}
+{
+	"_id" : ObjectId("5e144474a61e0e2cdca7e512"),
+	"name" : "Whistler",
+	"location" : {
+		"type" : "Point",
+		"coordinates" : [
+			-122.95,
+			50.12
+		]
+	}
+}
+
+
+------ 4: Find all polygons that intersect with a 900 mile circle centered at San Francisco 
+---------> >db.geo.find({"location.type":"Polygon",location:{ $nearSphere:{ $geometry:{type:"Point",coordinates:[-122.25,37.47]},$maxDistance:900*1609 }}}).pretty();
+{
+	"_id" : ObjectId("5e1d7317e8ecda9ed6311bd6"),
+	"name" : "Colorado",
+	"location" : {
+		"type" : "Polygon",
+		"coordinates" : [
+			[
+				[
+					-109,
+					41
+				],
+				[
+					-102,
+					41
+				],
+				[
+					-102,
+					37
+				],
+				[
+					-109,
+					37
+				],
+				[
+					-109,
+					41
+				]
+			]
+		]
+	}
+}
+
+
+
+
 
 
