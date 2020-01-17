@@ -1,1 +1,17 @@
+                            Lab Session-1                         
+Date: 9/12/2019
 
+------ 1: Create database organisation.
+-------->
+
+2: Create collection “Employee” with the following fields and add 6 records: employee_id,ename,age,gender,designation,experience,salary,department
+3: Retrieve employee with gender=F
+4: Rename field ename to employee_name
+5: find employee_name between age 30-50.
+6: Find employee names with gender=M and salary between 30000-40000
+7: Add field phone_no in all documents.
+8: Remove field experience where Employee_name=”Ajay”
+9: Add field joining date to all the documents.
+10: update the joining date of all the employees.
+11. Delete a document which has employee_name=”Ajay”.
+12: Increase Ajay’s age by 5 yrs.
